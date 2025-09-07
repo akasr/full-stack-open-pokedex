@@ -85,7 +85,7 @@ jobs:
           text: "A new version of Pokedex deployed"
           severity: info
           color: #00FF00
-          description: "to https://full-stack-open-pokedex-al45.onrender.com by {{ github.actor }}"
+          description: "to https://full-stack-open-pokedex-al45.onrender.com by ${{ github.actor }}"
 
       - name: Discord Webhook Failure
         uses: rjstone/discord-webhook-notify@v2
@@ -96,5 +96,4 @@ jobs:
           severity: error
           color: #FF0000
           title: commit
-          description: "https://github.com/akasr/full-stack-open-pokedex/commit/${{ github.sha }} by {{ github.actor }} broke the build"
-          
+          description: "https://github.com/akasr/full-stack-open-pokedex/commit/${{ github.sha }} by ${{ github.actor }} broke the build"
