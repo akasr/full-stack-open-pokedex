@@ -75,10 +75,9 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
-          TAG_PREFIX: v
 
       - name: Discord Webhook Success
-        uses: rjstone/discord-webhook-notify@v2
+        uses: rjstone/discord-webhook-notify@v2.2.1
         if: ${{ success() }}
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
@@ -88,7 +87,7 @@ jobs:
           description: "to https://full-stack-open-pokedex-al45.onrender.com by ${{ github.actor }}"
 
       - name: Discord Webhook Failure
-        uses: rjstone/discord-webhook-notify@v2
+        uses: rjstone/discord-webhook-notify@v2.2.1
         if: ${{ failure() }}
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
