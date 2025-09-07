@@ -75,15 +75,13 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           DEFAULT_BUMP: patch
-          with_v: true
-          tag_prefix: v
+          TAG_PREFIX: v
 
       - name: Discord Webhook Success
         uses: rjstone/discord-webhook-notify@v2
         if: ${{ success() }}
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          username: "akasr"
           text: "A new version of Pokedex deployed"
           severity: info
           color: #00FF00
@@ -94,7 +92,6 @@ jobs:
         if: ${{ failure() }}
         with:
           webhookUrl: ${{ secrets.DISCORD_WEBHOOK }}
-          username: "akasr"
           text: "Build failed"
           severity: error
           color: #FF0000
