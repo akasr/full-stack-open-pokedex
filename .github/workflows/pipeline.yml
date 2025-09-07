@@ -6,7 +6,7 @@ on:
       - main
   pull_request:
     branches: [main]
-    types: [opened, synchronize]
+    types: [opened, synchronize, closed]
     
 jobs:
   simple_deployment_pipeline:
@@ -53,5 +53,5 @@ jobs:
           retention-days: 30
 
       - name: Trigger deployment
-        if: ${{ github.event_name == 'push' }}
+        if: ${{ (github.event_name == 'push') || (github.event_name == 'pull_request' && github.event.action == 'closed' && github.event.pull_request.merged == true) }}
         run: curl https://api.render.com/deploy/srv-${{ secrets.RENDER_SERVICE_ID }}?key=${{ secrets.RENDER_API_KEY }}
